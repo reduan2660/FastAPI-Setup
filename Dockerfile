@@ -5,4 +5,7 @@ COPY requirement.txt requirement.txt
 RUN pip3 install --upgrade pip
 RUN pip3 install -r requirement.txt
 COPY . /app
-EXPOSE 8000
+# EXPOSE 8000
+EXPOSE 80
+RUN alembic revision --autogenerate -m "New Migration"
+RUN alembic upgrade head
